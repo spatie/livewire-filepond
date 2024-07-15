@@ -22,7 +22,7 @@ class LivewireFilepondServiceProvider extends PackageServiceProvider
     public function packageBooted(): void
     {
         Route::get('_filepond/scripts', function () {
-            return Utils::pretendResponseIsFile(__DIR__."/../resources/dist/filepond.js");
+            return Utils::pretendResponseIsFile(__DIR__.'/../resources/dist/filepond.js');
         })->name('livewire-filepond.scripts');
 
         Blade::component('livewire-filepond::upload', 'filepond::upload');
