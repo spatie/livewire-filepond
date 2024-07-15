@@ -31,6 +31,12 @@ php artisan vendor:publish --tag="livewire-filepond-views"
 
 ## Usage
 
+Add the scripts to your layout or view where you want to use Filepond:
+
+```bladehtml
+@filepondScripts
+```
+
 Add the component to your view:
 
 ```bladehtml
@@ -50,6 +56,16 @@ class MyLivewireComponent extends Component
     public $file;
 }
 ```
+
+## Publishing assets
+
+Livewire Filepond automatically loads the scripts through an endpoint. If you want to serve the assets directly, you can publish them:
+
+```shell
+php artisan vendor:publish --tag=livewire-filepond-assets --force
+```
+
+Make sure to add this to your composer's `post-update-cmd` scripts.
 
 ## Testing
 
