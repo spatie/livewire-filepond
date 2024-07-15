@@ -73,6 +73,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 - [Rias](https://github.com/riasvdv)
 - [All Contributors](../../contributors)
+- [Ewilan Rivière](https://ewilan-riviere.com/articles/laravel-filepond-livewire)
 
 ## License
 
