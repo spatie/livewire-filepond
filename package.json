@@ -1,0 +1,18 @@
+{
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "filepond": "^4.31.1",
+        "filepond-plugin-file-validate-size": "^2.2.8",
+        "filepond-plugin-file-validate-type": "^1.2.9",
+        "filepond-plugin-image-crop": "^2.0.6",
+        "filepond-plugin-image-preview": "^4.6.12"
+    },
+    "devDependencies": {
+        "laravel-vite-plugin": "^1.0.5",
+        "vite": "^5.3.3"
+    }
+}
