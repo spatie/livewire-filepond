@@ -13,6 +13,4 @@ class TestComponent extends Component
     {
         return '<div>dummy</div>';
     }
-
-
 }

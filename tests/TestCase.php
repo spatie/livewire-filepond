@@ -2,7 +2,6 @@
 
 namespace Spatie\LivewireFilepond\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\LivewireFilepond\LivewireFilepondServiceProvider;
@@ -23,6 +22,4 @@ class TestCase extends Orchestra
             LivewireFilepondServiceProvider::class,
         ];
     }
-
-
 }
