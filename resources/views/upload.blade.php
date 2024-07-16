@@ -21,7 +21,7 @@ $pondProperties = $attributes->except([
 
 // convert keys to kebab case
 $pondProperties = collect($pondProperties)
-    ->mapWithKeys(fn ($value, $key) => [Illuminate\Support\Str::kebab($key) => $value])
+    ->mapWithKeys(fn ($value, $key) => [Illuminate\Support\Str::camel($key) => $value])
     ->toArray();
 @endphp
 
