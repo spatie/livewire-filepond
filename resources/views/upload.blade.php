@@ -19,7 +19,7 @@ $pondProperties = $attributes->except([
     'wire:model',
 ]);
 
-// convert keys to kebab case
+// convert keys from kebab-case to camelCase
 $pondProperties = collect($pondProperties)
     ->mapWithKeys(fn ($value, $key) => [Illuminate\Support\Str::camel($key) => $value])
     ->toArray();
