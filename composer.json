@@ -4,7 +4,9 @@
     "keywords": [
         "Spatie",
         "laravel",
-        "livewire-filepond"
+        "livewire-filepond",
+        "livewire",
+        "uploads"
     ],
     "homepage": "https://github.com/spatie/livewire-filepond",
     "license": "MIT",
