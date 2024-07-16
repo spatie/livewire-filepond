@@ -17,7 +17,6 @@ Here's an example of how you can use it in your views:
 
 Here's how it looks like in action in [mailcoach.app](https://mailcoach.app) (a product we built at Spatie):
 
-
 ## Support us
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/livewire-filepond.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/livewire-filepond)
