@@ -5,7 +5,18 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/spatie/livewire-filepond/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/spatie/livewire-filepond/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/livewire-filepond.svg?style=flat-square)](https://packagist.org/packages/spatie/livewire-filepond)
 
-A Livewire Filepond component that you can `wire:model` to.
+[Filepond](https://pqina.nl/filepond/) is a powerful JavaScript library to upload files.
+
+This repository contains a Livewire component that allow you to use Filepond easily in your  projects.
+
+Here's an example of how you can use it in your views:
+
+```bladehtml
+<x-filepond::upload wire:model="file" />
+```
+
+Here's how it looks like in action in [mailcoach.app](https://mailcoach.app) (a product we built at Spatie):
+
 
 ## Support us
 
@@ -31,19 +42,13 @@ php artisan vendor:publish --tag="livewire-filepond-views"
 
 ## Usage
 
-Add the scripts to your layout or view where you want to use Filepond:
+First, add the scripts to your layout or view where you want to use Filepond:
 
 ```bladehtml
 @filepondScripts
 ```
 
-Add the component to your view:
-
-```bladehtml
-<x-filepond::upload wire:model="file" />
-```
-
-Add the `WithFilePond` trait to your component:
+Next, add the `WithFilePond` trait to your component:
 
 ```php
 use Livewire\Component;
@@ -57,6 +62,12 @@ class MyLivewireComponent extends Component
 }
 ```
 
+Finally, add the component to your view:
+
+```bladehtml
+<x-filepond::upload wire:model="file" />
+```
+
 ## Publishing assets
 
 Livewire Filepond automatically loads the scripts through an endpoint. If you want to serve the assets directly, you can publish them:
@@ -65,7 +76,7 @@ Livewire Filepond automatically loads the scripts through an endpoint. If you wa
 php artisan vendor:publish --tag=livewire-filepond-assets --force
 ```
 
-Make sure to add this to your composer's `post-update-cmd` scripts.
+To keep the assets up to that at all times, you can add the command above to your Composer's `post-update-cmd` scripts.
 
 ## Testing
 
@@ -87,7 +98,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Rias](https://github.com/riasvdv)
+- [Rias Van der Veken](https://github.com/riasvdv)
 - [All Contributors](../../contributors)
 - [Ewilan Rivière](https://ewilan-riviere.com/articles/laravel-filepond-livewire)
 
