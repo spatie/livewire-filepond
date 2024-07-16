@@ -4,7 +4,7 @@
     'disabled' => false,
     'placeholder' => 'Drag & Drop your files or <span class="filepond--label-action"> Browse </span>',
 ])
-@php($wireModelAttribute = $attributes->whereStartsWith('wire:model')->first() ?? throw new Exception("Must wire:model to the filepond input."))
+@php($wireModelAttribute = $attributes->whereStartsWith('wire:model')->first() ?? throw new Exception("You must wire:model to the filepond input."))
 <div
     class="{{ $attributes->get('class') }}"
     wire:ignore
