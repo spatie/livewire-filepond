@@ -1,4 +1,4 @@
-# A Livewire Filepond component
+# Upload files using Filepond in Livewire components
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/livewire-filepond.svg?style=flat-square)](https://packagist.org/packages/spatie/livewire-filepond)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/spatie/livewire-filepond/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/spatie/livewire-filepond/actions?query=workflow%3Arun-tests+branch%3Amain)

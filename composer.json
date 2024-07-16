@@ -1,6 +1,6 @@
 {
     "name": "spatie/livewire-filepond",
-    "description": "A Livewire Filepond component",
+    "description": "Upload files using Filepond in Livewire components",
     "keywords": [
         "Spatie",
         "laravel",
