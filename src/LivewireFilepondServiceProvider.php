@@ -25,6 +25,10 @@ class LivewireFilepondServiceProvider extends PackageServiceProvider
             return Utils::pretendResponseIsFile(__DIR__.'/../resources/dist/filepond.js');
         })->name('livewire-filepond.scripts');
 
+        Route::get('_filepond/styles', function () {
+            return Utils::pretendResponseIsFile(__DIR__.'/../resources/dist/filepond.css', 'text/css');
+        })->name('livewire-filepond.styles');
+
         Blade::component('livewire-filepond::upload', 'filepond::upload');
 
         Blade::directive('filepondScripts', function () {
@@ -33,11 +37,16 @@ class LivewireFilepondServiceProvider extends PackageServiceProvider
             $scripts = [];
 
             // Default to dynamic js (served by a Laravel route).
-            $fullAssetPath = route('livewire-filepond.scripts');
+            $fullScriptPath = route('livewire-filepond.scripts');
+            $fullStylePath = route('livewire-filepond.styles');
 
             // Use static assets if they have been published
             if (file_exists(public_path('vendor/livewire-filepond/filepond.js'))) {
-                $fullAssetPath = asset('/vendor/livewire-filepond/filepond.js');
+                $fullScriptPath = asset('/vendor/livewire-filepond/filepond.js');
+            }
+
+            if (file_exists(public_path('vendor/livewire-filepond/filepond.css'))) {
+                $fullStylePath = asset('/vendor/livewire-filepond/filepond.css');
             }
 
             if (is_file(__DIR__.'/../resources/hot')) {
@@ -47,7 +56,8 @@ class LivewireFilepondServiceProvider extends PackageServiceProvider
                 $scripts[] = sprintf('<script type="module" src="%s" defer data-navigate-track></script>', "{$url}/@vite/client");
             } else {
                 $scripts[] = <<<HTML
-                    <script type="module" src="{$fullAssetPath}?v={$version}" data-navigate-once defer data-navigate-track></script>
+                    <link rel="stylesheet" type="text/css" href="{$fullStylePath}?v={$version}">
+                    <script type="module" src="{$fullScriptPath}?v={$version}" data-navigate-once defer data-navigate-track></script>
                 HTML;
             }
 
