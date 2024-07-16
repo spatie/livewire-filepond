@@ -67,6 +67,21 @@ Finally, add the component to your view:
 <x-filepond::upload wire:model="file" />
 ```
 
+### Customizing the component
+
+Optionally, you can use these component properties to customize the component:
+
+- `multiple`: Allow multiple files to be uploaded. Default: `false`.
+- `required`: Make the file input required. Default: `false`.
+- `disabled`: Disable the file input. Default: `false`.
+- `placeholder`: Placeholder text for the file input. Default: `Drag & Drop your files or <span class="filepond--label-action"> Browse </span>`.
+
+Additionally, you can also pass [any property that the Filepond component accepts](). For example, to set the maximum number of files to 5, you can do this:
+
+```bladehtml
+<x-filepond::upload wire:model="file" max-files="5" />
+```
+
 ## Publishing assets
 
 Livewire Filepond automatically loads the scripts through an endpoint. If you want to serve the assets directly, you can publish them:
