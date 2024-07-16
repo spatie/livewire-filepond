@@ -4,8 +4,10 @@
     'disabled' => false,
     'placeholder' => 'Drag & Drop your files or <span class="filepond--label-action"> Browse </span>',
 ])
-@php($wireModelAttribute = $attributes->whereStartsWith('wire:model')->first() ?? throw new Exception("You must wire:model to the filepond input."))
-
+@php
+if (! $wireModelAttribute = $attributes->whereStartsWith('wire:model')->first()) {
+    throw new Exception("You must wire:model to the filepond input.");
+}
 
 $pondProperties = $attributes->except([
     'class',
@@ -14,7 +16,14 @@ $pondProperties = $attributes->except([
     'disabled',
     'multiple',
     'wire:model',
-])
+]);
+
+// convert keys to kebab case
+$pondProperties = collect($pondProperties)
+    ->mapWithKeys(fn ($value, $key) => [Illuminate\Support\Str::kebab($key) => $value])
+    ->toArray();
+
+@endphp
 <div
     class="{{ $attributes->get('class') }}"
     wire:ignore
