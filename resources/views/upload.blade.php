@@ -5,6 +5,16 @@
     'placeholder' => 'Drag & Drop your files or <span class="filepond--label-action"> Browse </span>',
 ])
 @php($wireModelAttribute = $attributes->whereStartsWith('wire:model')->first() ?? throw new Exception("You must wire:model to the filepond input."))
+
+
+$pondProperties = $attributes->except([
+    'class',
+    'placeholder',
+    'required',
+    'disabled',
+    'multiple',
+    'wire:model',
+])
 <div
     class="{{ $attributes->get('class') }}"
     wire:ignore
@@ -52,14 +62,7 @@
           disabled: @js($disabled),
       });
 
-      pond.setOptions(@js($attributes->except([
-        'class',
-        'placeholder',
-        'required',
-        'disabled',
-        'multiple',
-        'wire:model',
-      ])));
+      pond.setOptions(@js($pondProperties));
 
       pond.addFiles(files)
       pond.on('addfile', (error, file) => {
