@@ -2,7 +2,7 @@
     'multiple' => false,
     'required' => false,
     'disabled' => false,
-    'placeholder' => 'Drag & Drop your files or <span class="filepond--label-action"> Browse </span>',
+    'placeholder' => __('Drag & Drop your files or <span class="filepond--label-action"> Browse </span>'),
 ])
 
 @php
@@ -28,7 +28,7 @@ $pondProperties = collect($pondProperties)
 <div
     class="{{ $attributes->get('class') }}"
     wire:ignore
-    wire:cloak
+    x-cloak
     x-data="{
         model: @entangle($wireModelAttribute),
         isMultiple: @js($multiple),
