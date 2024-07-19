@@ -2,6 +2,18 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.0.2 - 2024-07-19
+
+### What's Changed
+
+* Add translation and fix x-cloak by @arifbudimanar in https://github.com/spatie/livewire-filepond/pull/3
+
+### New Contributors
+
+* @arifbudimanar made their first contribution in https://github.com/spatie/livewire-filepond/pull/3
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.0.1...1.0.2
+
 ## 1.0.1 - 2024-07-16
 
 - accept Filepond properties as kebab-case
