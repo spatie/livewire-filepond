@@ -55,14 +55,18 @@ $pondProperties = collect($pondProperties)
       pond.setOptions({
           allowMultiple: isMultiple,
           server: {
-              process: (fieldName, file, metadata, load, error, progress) => {
-                  @this.upload('{{ $wireModelAttribute }}', file, load, error, progress);
+              process: async (fieldName, file, metadata, load, error, progress) => {
+                  $dispatch('filepond-upload-started');
+                  await @this.upload('{{ $wireModelAttribute }}', file, (response) => {
+                      load(response);
+                      $dispatch('filepond-upload-finished', { response });
+                  }, error, progress);
               },
               revert: (filename, load) => {
                   @this.revert('{{ $wireModelAttribute }}', filename, load);
               },
               remove: (file, load) => {
-              console.log(file);
+                  console.log(file);
                   @this.remove('{{ $wireModelAttribute }}', file.name);
                   load();
               },
