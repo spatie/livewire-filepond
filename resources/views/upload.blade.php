@@ -56,10 +56,10 @@ $pondProperties = collect($pondProperties)
           allowMultiple: isMultiple,
           server: {
               process: async (fieldName, file, metadata, load, error, progress) => {
-                  $dispatch('filepond-upload-started');
+                  $dispatch('filepond-upload-started', '{{ $wireModelAttribute }}');
                   await @this.upload('{{ $wireModelAttribute }}', file, (response) => {
                       load(response);
-                      $dispatch('filepond-upload-finished', { response });
+                      $dispatch('filepond-upload-finished', {'{{ $wireModelAttribute }}', response });
                   }, error, progress);
               },
               revert: (filename, load) => {
