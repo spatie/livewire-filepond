@@ -23,6 +23,8 @@ $pondProperties = $attributes->except([
 $pondProperties = collect($pondProperties)
     ->mapWithKeys(fn ($value, $key) => [Illuminate\Support\Str::camel($key) => $value])
     ->toArray();
+
+$pondLocalizations = __('livewire-filepond::filepond');
 @endphp
 
 <div
@@ -71,6 +73,8 @@ $pondProperties = collect($pondProperties)
           required: @js($required),
           disabled: @js($disabled),
       });
+
+      pond.setOptions(@js($pondLocalizations));
 
       pond.setOptions(@js($pondProperties));
 

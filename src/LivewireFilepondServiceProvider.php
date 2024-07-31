@@ -16,7 +16,8 @@ class LivewireFilepondServiceProvider extends PackageServiceProvider
         $package
             ->name('livewire-filepond')
             ->hasAssets()
-            ->hasViews();
+            ->hasViews()
+            ->hasTranslations();
     }
 
     public function packageBooted(): void
