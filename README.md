@@ -84,6 +84,27 @@ Additionally, you can also pass [any property that the Filepond component accept
 <x-filepond::upload wire:model="file" max-files="5" />
 ```
 
+Localization automatically works based on the current locale. If you want to customize the language, you can publish the language file using:
+
+```bash
+php artisan vendor:publish --tag="livewire-filepond-translations"
+```
+
+If you want to change your locale you can do so by change the `.env` file:
+
+```env
+APP_LOCALE=id # change to Indonesian for example
+```
+
+or by setting the locale using laravel's `App` facade: 
+
+```php
+use Illuminate\Support\Facades\App;
+
+App::setLocale('id'); // change to Indonesian for example
+```
+The last method can be used to change the locale on the fly. Like when a user changes the language (You need to implement this yourself).
+
 ## Publishing assets
 
 Livewire Filepond automatically loads the scripts through an endpoint. If you want to serve the assets directly, you can publish them:

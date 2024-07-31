@@ -2,6 +2,18 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.1.0 - 2024-07-31
+
+### What's Changed
+
+* add localization for filepond by @uluumbch in https://github.com/spatie/livewire-filepond/pull/8
+
+### New Contributors
+
+* @uluumbch made their first contribution in https://github.com/spatie/livewire-filepond/pull/8
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.0.2...1.1.0
+
 ## 1.0.2 - 2024-07-19
 
 ### What's Changed
