@@ -62,13 +62,15 @@ $pondProperties = collect($pondProperties)
                       $dispatch('filepond-upload-finished', {'{{ $wireModelAttribute }}', response });
                   }, error, progress);
               },
-              revert: (filename, load) => {
-                  @this.revert('{{ $wireModelAttribute }}', filename, load);
+              revert: async (filename, load) => {
+                  await @this.revert('{{ $wireModelAttribute }}', filename, load);
+                  $dispatch('filepond-upload-reverted', '{{ $wireModelAttribute }}');
               },
-              remove: (file, load) => {
+              remove: async (file, load) => {
                   console.log(file);
-                  @this.remove('{{ $wireModelAttribute }}', file.name);
+                  await @this.remove('{{ $wireModelAttribute }}', file.name);
                   load();
+                  $dispatch('filepond-upload-file-removed', '{{ $wireModelAttribute }}');
               },
           },
           labelIdle: @js($placeholder),
