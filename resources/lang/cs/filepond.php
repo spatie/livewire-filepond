@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => 'Rozlišení je příliš malé',
     'imageValidateSizeLabelImageResolutionTooHigh' => 'Rozlišení je příliš velké',
     'imageValidateSizeLabelExpectedMinResolution' => 'Minimální rozlišení je {minResolution}',
-    'imageValidateSizeLabelExpectedMaxResolution' => 'Maximální rozlišení je {maxResolution}'
+    'imageValidateSizeLabelExpectedMaxResolution' => 'Maximální rozlišení je {maxResolution}',
 ];

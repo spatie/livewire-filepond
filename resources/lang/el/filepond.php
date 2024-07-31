@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => 'Η ανάλυση της εικόνας είναι πολύ χαμηλή',
     'imageValidateSizeLabelImageResolutionTooHigh' => 'Η ανάλυση της εικόνας είναι πολύ υψηλή',
     'imageValidateSizeLabelExpectedMinResolution' => 'Η ελάχιστη αποδεκτή ανάλυση είναι {minResolution}',
-    'imageValidateSizeLabelExpectedMaxResolution' => 'Η μέγιστη αποδεκτή ανάλυση είναι {maxResolution}'
+    'imageValidateSizeLabelExpectedMaxResolution' => 'Η μέγιστη αποδεκτή ανάλυση είναι {maxResolution}',
 ];

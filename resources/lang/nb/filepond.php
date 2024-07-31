@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => 'Oppløsningen er for lav',
     'imageValidateSizeLabelImageResolutionTooHigh' => 'Oppløsningen er for høy',
     'imageValidateSizeLabelExpectedMinResolution' => 'Minimum oppløsning er {minResolution}',
-    'imageValidateSizeLabelExpectedMaxResolution' => 'Maksimal oppløsning er {maxResolution}'
+    'imageValidateSizeLabelExpectedMaxResolution' => 'Maksimal oppløsning er {maxResolution}',
 ];

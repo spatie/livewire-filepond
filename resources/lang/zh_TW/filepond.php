@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => '解析度過低',
     'imageValidateSizeLabelImageResolutionTooHigh' => '解析度過高',
     'imageValidateSizeLabelExpectedMinResolution' => '最低解析度：{minResolution}',
-    'imageValidateSizeLabelExpectedMaxResolution' => '最高解析度：{maxResolution}'
+    'imageValidateSizeLabelExpectedMaxResolution' => '最高解析度：{maxResolution}',
 ];

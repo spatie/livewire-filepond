@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => 'وردبینییەکەی زۆر کەمە',
     'imageValidateSizeLabelImageResolutionTooHigh' => 'وردبینییەکەی زۆر بەرزە',
     'imageValidateSizeLabelExpectedMinResolution' => 'کەمترین وردبینیی {minResolution}',
-    'imageValidateSizeLabelExpectedMaxResolution' => 'زۆرترین وردبینی {maxResolution}'
+    'imageValidateSizeLabelExpectedMaxResolution' => 'زۆرترین وردبینی {maxResolution}',
 ];

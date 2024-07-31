@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => 'គុណភាពបង្ហាញទាបពេក',
     'imageValidateSizeLabelImageResolutionTooHigh' => 'គុណភាពបង្ហាញខ្ពស់ពេក',
     'imageValidateSizeLabelExpectedMinResolution' => 'គុណភាពបង្ហាញអប្បបរមាគឺ {minResolution}',
-    'imageValidateSizeLabelExpectedMaxResolution' => 'គុណភាពបង្ហាញអតិបរមាគឺ {maxResolution}'
+    'imageValidateSizeLabelExpectedMaxResolution' => 'គុណភាពបង្ហាញអតិបរមាគឺ {maxResolution}',
 ];

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => 'وضوح تصویر بسیار کم است',
     'imageValidateSizeLabelImageResolutionTooHigh' => 'وضوع تصویر بسیار زیاد است',
     'imageValidateSizeLabelExpectedMinResolution' => 'حداقل وضوح تصویر {minResolution} است',
-    'imageValidateSizeLabelExpectedMaxResolution' => 'حداکثر وضوح تصویر {maxResolution} است'
+    'imageValidateSizeLabelExpectedMaxResolution' => 'حداکثر وضوح تصویر {maxResolution} است',
 ];

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => 'الدقة ضعيفة جدا',
     'imageValidateSizeLabelImageResolutionTooHigh' => 'الدقة مرتفعة جدا',
     'imageValidateSizeLabelExpectedMinResolution' => 'أقل دقة: {minResolution}',
-    'imageValidateSizeLabelExpectedMaxResolution' => 'أقصى دقة: {maxResolution}'
+    'imageValidateSizeLabelExpectedMaxResolution' => 'أقصى دقة: {maxResolution}',
 ];

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => 'Izšķirtspēja ir pārāk zema',
     'imageValidateSizeLabelImageResolutionTooHigh' => 'Izšķirtspēja ir pārāk augsta',
     'imageValidateSizeLabelExpectedMinResolution' => 'Minimālā izšķirtspēja ir {minResolution}',
-    'imageValidateSizeLabelExpectedMaxResolution' => 'Maksimālā izšķirtspēja ir {maxResolution}'
+    'imageValidateSizeLabelExpectedMaxResolution' => 'Maksimālā izšķirtspēja ir {maxResolution}',
 ];

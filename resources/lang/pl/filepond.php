@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => 'Rozdzielczość jest zbyt niska',
     'imageValidateSizeLabelImageResolutionTooHigh' => 'Rozdzielczość jest zbyt wysoka',
     'imageValidateSizeLabelExpectedMinResolution' => 'Minimalna rozdzielczość to {minResolution}',
-    'imageValidateSizeLabelExpectedMaxResolution' => 'Maksymalna rozdzielczość to {maxResolution}'
+    'imageValidateSizeLabelExpectedMaxResolution' => 'Maksymalna rozdzielczość to {maxResolution}',
 ];

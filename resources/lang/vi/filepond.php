@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => 'Độ phân giải quá thấp',
     'imageValidateSizeLabelImageResolutionTooHigh' => 'Độ phân giải quá cao',
     'imageValidateSizeLabelExpectedMinResolution' => 'Độ phân giải tối thiểu là {minResolution}',
-    'imageValidateSizeLabelExpectedMaxResolution' => 'Độ phân giải tối đa là {maxResolution}'
+    'imageValidateSizeLabelExpectedMaxResolution' => 'Độ phân giải tối đa là {maxResolution}',
 ];

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => 'A felbontás túl alacsony',
     'imageValidateSizeLabelImageResolutionTooHigh' => 'A felbontás túl magas',
     'imageValidateSizeLabelExpectedMinResolution' => 'Minimáis felbontás: {minResolution}',
-    'imageValidateSizeLabelExpectedMaxResolution' => 'Maximális felbontás: {maxResolution}'
+    'imageValidateSizeLabelExpectedMaxResolution' => 'Maximális felbontás: {maxResolution}',
 ];

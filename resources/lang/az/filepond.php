@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => 'Görüntü imkanı çox aşağı',
     'imageValidateSizeLabelImageResolutionTooHigh' => 'Görüntü imkanı çox yüksək',
     'imageValidateSizeLabelExpectedMinResolution' => 'Minimum görüntü imkanı {minResolution}',
-    'imageValidateSizeLabelExpectedMaxResolution' => 'Maximum görüntü imkanı {maxResolution}'
+    'imageValidateSizeLabelExpectedMaxResolution' => 'Maximum görüntü imkanı {maxResolution}',
 ];

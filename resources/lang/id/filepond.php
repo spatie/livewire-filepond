@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => 'Resolusi terlalu rendah',
     'imageValidateSizeLabelImageResolutionTooHigh' => 'Resolusi terlalu tinggi',
     'imageValidateSizeLabelExpectedMinResolution' => 'Resolusi minimum adalah {minResolution}',
-    'imageValidateSizeLabelExpectedMaxResolution' => 'Resolusi maksimum adalah {maxResolution}'
+    'imageValidateSizeLabelExpectedMaxResolution' => 'Resolusi maksimum adalah {maxResolution}',
 ];

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 return [
@@ -38,5 +39,5 @@ return [
     'imageValidateSizeLabelImageResolutionTooLow' => '해상도가 너무 낮습니다.',
     'imageValidateSizeLabelImageResolutionTooHigh' => '해상도가 너무 높습니다.',
     'imageValidateSizeLabelExpectedMinResolution' => '최소 해상도는 {minResolution} 입니다.',
-    'imageValidateSizeLabelExpectedMaxResolution' => '최대 해상도는 {maxResolution} 입니다.'
+    'imageValidateSizeLabelExpectedMaxResolution' => '최대 해상도는 {maxResolution} 입니다.',
 ];
