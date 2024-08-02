@@ -69,7 +69,6 @@ $pondLocalizations = __('livewire-filepond::filepond');
                   load();
               },
           },
-          labelIdle: @js($placeholder),
           required: @js($required),
           disabled: @js($disabled),
       });
@@ -77,6 +76,8 @@ $pondLocalizations = __('livewire-filepond::filepond');
       pond.setOptions(@js($pondLocalizations));
 
       pond.setOptions(@js($pondProperties));
+
+      pond.setOptions({ labelIdle: @js($placeholder) });
 
       pond.addFiles(files)
       pond.on('addfile', (error, file) => {
