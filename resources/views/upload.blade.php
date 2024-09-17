@@ -61,7 +61,7 @@ $pondLocalizations = __('livewire-filepond::filepond');
                   $dispatch('filepond-upload-started', '{{ $wireModelAttribute }}');
                   await @this.upload('{{ $wireModelAttribute }}', file, (response) => {
                       load(response);
-                      $dispatch('filepond-upload-finished', {'{{ $wireModelAttribute }}', response });
+                      $dispatch('filepond-upload-finished', {'{{ $wireModelAttribute }}': response });
                   }, error, progress);
               },
               revert: async (filename, load) => {
