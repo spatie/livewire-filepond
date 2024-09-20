@@ -2,6 +2,20 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.2.0 - 2024-09-20
+
+### What's Changed
+
+* Restore customization of placeholder by @RoccoHoward in https://github.com/spatie/livewire-filepond/pull/11
+* added upload started and finished events by @abdelhamiderrahmouni in https://github.com/spatie/livewire-filepond/pull/5
+
+### New Contributors
+
+* @RoccoHoward made their first contribution in https://github.com/spatie/livewire-filepond/pull/11
+* @abdelhamiderrahmouni made their first contribution in https://github.com/spatie/livewire-filepond/pull/5
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.1.0...1.2.0
+
 ## 1.1.0 - 2024-07-31
 
 ### What's Changed
