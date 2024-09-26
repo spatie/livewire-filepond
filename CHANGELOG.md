@@ -2,6 +2,18 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.2.1 - 2024-09-26
+
+### What's Changed
+
+* Fix bug array and traversable can be unpacked by @KhairulAzmi21 in https://github.com/spatie/livewire-filepond/pull/15
+
+### New Contributors
+
+* @KhairulAzmi21 made their first contribution in https://github.com/spatie/livewire-filepond/pull/15
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.2.0...1.2.1
+
 ## 1.2.0 - 2024-09-20
 
 ### What's Changed
