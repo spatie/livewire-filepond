@@ -66,13 +66,13 @@ $pondLocalizations = __('livewire-filepond::filepond');
               },
               revert: async (filename, load) => {
                   await @this.revert('{{ $wireModelAttribute }}', filename, load);
-                  $dispatch('filepond-upload-reverted', '{{ $wireModelAttribute }}');
+                  $dispatch('filepond-upload-reverted', {'attribute' : '{{ $wireModelAttribute }}');
               },
               remove: async (file, load) => {
                   console.log(file);
                   await @this.remove('{{ $wireModelAttribute }}', file.name);
                   load();
-                  $dispatch('filepond-upload-file-removed', '{{ $wireModelAttribute }}');
+                  $dispatch('filepond-upload-file-removed', {'attribute' : '{{ $wireModelAttribute }}');
               },
           },
           required: @js($required),
