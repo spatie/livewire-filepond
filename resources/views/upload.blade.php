@@ -91,5 +91,5 @@ $pondLocalizations = __('livewire-filepond::filepond');
       });
     }"
 >
-    <input type="file" x-ref="input">
+    <input type="file" x-ref="input" accept="{{ $attributes->get('accept') }}">
 </div>
