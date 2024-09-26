@@ -78,7 +78,7 @@ Optionally, you can use these component properties to customize the component:
 - `disabled`: Disable the file input. Default: `false`.
 - `placeholder`: Placeholder text for the file input. Default: `Drag & Drop your files or <span class="filepond--label-action"> Browse </span>`.
 
-Additionally, you can also pass [any property that the Filepond component accepts](https://pqina.nl/filepond/docs/api/instance/properties/). Make sure to use kebab case the property. For example, to set the maximum number of files to 5, you can do this:
+Additionally, you can also pass [any property that the Filepond component accepts](https://pqina.nl/filepond/docs/api/instance/properties/) and [plugins properties](https://pqina.nl/filepond/docs/api/plugins/). Make sure to use kebab case the property. For example, to set the maximum number of files to 5, you can do this:
 
 ```bladehtml
 <x-filepond::upload wire:model="file" max-files="5" />
