@@ -77,6 +77,7 @@ Optionally, you can use these component properties to customize the component:
 - `required`: Make the file input required. Default: `false`.
 - `disabled`: Disable the file input. Default: `false`.
 - `placeholder`: Placeholder text for the file input. Default: `Drag & Drop your files or <span class="filepond--label-action"> Browse </span>`.
+- `accept`: Specifies the types of files that the user can select. It accepts a comma-separated list of allowed file extensions or MIME types. For example, `accept="image/*"` allows any image file, and `accept=".pdf,.docx"` restricts the input to PDF and Word documents. Note that this attribute is not a secure way to enforce file types, as it only serves as a hint to the browser; server-side validation is still required to ensure that only the correct file types are accepted.
 
 Additionally, you can also pass [any property that the Filepond component accepts](https://pqina.nl/filepond/docs/api/instance/properties/). Make sure to use kebab case the property. For example, to set the maximum number of files to 5, you can do this:
 
