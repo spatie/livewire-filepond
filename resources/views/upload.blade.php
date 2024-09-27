@@ -3,6 +3,7 @@
     'required' => false,
     'disabled' => false,
     'placeholder' => __('Drag & Drop your files or <span class="filepond--label-action"> Browse </span>'),
+    'revert' => true,
 ])
 
 @php
@@ -17,6 +18,7 @@ $pondProperties = $attributes->except([
     'disabled',
     'multiple',
     'wire:model',
+    'revert',
 ]);
 
 // convert keys from kebab-case to camelCase
@@ -34,6 +36,7 @@ $pondLocalizations = __('livewire-filepond::filepond');
     x-data="{
         model: @entangle($wireModelAttribute),
         isMultiple: @js($multiple),
+        allowRevert: @js($revert)
         current: undefined,
         files: [],
         async loadModel() {
@@ -64,7 +67,7 @@ $pondLocalizations = __('livewire-filepond::filepond');
                       $dispatch('filepond-upload-finished', {'{{ $wireModelAttribute }}': response });
                   }, error, progress);
               },
-              revert: async (filename, load) => {
+              revert: allowRevert ? './revert' : async (filename, load) => {
                   await @this.revert('{{ $wireModelAttribute }}', filename, load);
                   $dispatch('filepond-upload-reverted', '{{ $wireModelAttribute }}');
               },
