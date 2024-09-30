@@ -2,6 +2,19 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.2.2 - 2024-09-30
+
+### What's Changed
+
+* add plugins properties to docs; by @stockhausen in https://github.com/spatie/livewire-filepond/pull/18
+* fix missing braces by @KhairulAzmi21 in https://github.com/spatie/livewire-filepond/pull/20
+
+### New Contributors
+
+* @stockhausen made their first contribution in https://github.com/spatie/livewire-filepond/pull/18
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.2.1...1.2.2
+
 ## 1.2.1 - 2024-09-26
 
 ### What's Changed
