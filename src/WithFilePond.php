@@ -40,4 +40,10 @@ trait WithFilePond
             return false;
         });
     }
+
+    public function resetFilePond(string $property): void
+    {
+        $this->reset($property);
+        $this->dispatch("filepond-reset-$property");
+    }
 }

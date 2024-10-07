@@ -89,6 +89,10 @@ $pondLocalizations = __('livewire-filepond::filepond');
       pond.on('addfile', (error, file) => {
           if (error) console.log(error);
       });
+
+      $wire.on('filepond-reset-{{ $wireModelAttribute }}', () => {
+          pond.removeFiles();
+      });
     }"
 >
     <input type="file" x-ref="input">
