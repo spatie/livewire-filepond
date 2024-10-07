@@ -14,6 +14,7 @@ trait WithFilePond
     public function remove($property, $filename): void
     {
         $file = Str::after($filename, config('app.url'));
+        $this->$property = [];
 
         File::delete(public_path($file));
     }
