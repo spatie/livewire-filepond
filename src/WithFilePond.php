@@ -52,6 +52,7 @@ trait WithFilePond
 
                 if ($upload->getFilename() === $filename) {
                     $upload->delete();
+
                     return false;
                 }
 
