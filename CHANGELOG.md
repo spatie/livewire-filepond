@@ -2,6 +2,20 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.2.3 - 2024-10-07
+
+### What's Changed
+
+* add a functionality to reset FilePond instance by @Nevercom in https://github.com/spatie/livewire-filepond/pull/21
+* Remove console.log
+* Use Livewire methods to set & retreive properties
+
+### New Contributors
+
+* @Nevercom made their first contribution in https://github.com/spatie/livewire-filepond/pull/21
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.2.2...1.2.3
+
 ## 1.2.2 - 2024-09-30
 
 ### What's Changed
