@@ -5,6 +5,7 @@ namespace Spatie\LivewireFilepond;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
+use Livewire\LivewireManager;
 use Livewire\WithFileUploads;
 
 trait WithFilePond
@@ -14,32 +15,50 @@ trait WithFilePond
     public function remove($property, $filename): void
     {
         $file = Str::after($filename, config('app.url'));
-        $this->$property = [];
+
+        app(LivewireManager::class)->updateProperty(
+            $this,
+            $property,
+            is_array($this->getPropertyValue($property))
+                ? []
+                : null,
+        );
 
         File::delete(public_path($file));
     }
 
     public function revert($property, $filename): void
     {
-        if (! $this->$property) {
+        if (! $this->hasProperty($property)) {
             return;
         }
 
-        if (! is_array($this->$property)) {
-            $this->$property->delete();
+        $uploads = $this->getPropertyValue($property);
 
-            return;
-        }
-
-        $this->$property = array_filter($this->$property, function (TemporaryUploadedFile $file) use ($filename) {
-            if ($file->getFilename() !== $filename) {
-                return true;
+        if (! is_array($uploads)) {
+            if ($uploads instanceof TemporaryUploadedFile && $uploads->getFilename() === $filename) {
+                $uploads->delete();
+                app(LivewireManager::class)->updateProperty($this, $property, null);
             }
 
-            $file->delete();
+            return;
+        }
 
-            return false;
-        });
+        $newFiles = collect($uploads)
+            ->filter(function ($upload) use ($filename) {
+                if (! $upload instanceof TemporaryUploadedFile) {
+                    return false;
+                }
+
+                if ($upload->getFilename() === $filename) {
+                    $upload->delete();
+                    return false;
+                }
+
+                return true;
+            })->values()->toArray();
+
+        app(LivewireManager::class)->updateProperty($this, $property, $newFiles);
     }
 
     public function resetFilePond(string $property): void
