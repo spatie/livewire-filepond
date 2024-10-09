@@ -1,5 +1,5 @@
 @php
-(isset($placeholder)) ? $isCustomPlaceholder = true : $isCustomPlaceholder = false;
+$isCustomPlaceholder = isset($placeholder);
 @endphp
 
 @props([
