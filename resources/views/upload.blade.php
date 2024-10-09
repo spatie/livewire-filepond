@@ -1,3 +1,7 @@
+@php
+(isset($placeholder)) ? $isCustomPlaceholder = true : $isCustomPlaceholder = false;
+@endphp
+
 @props([
     'multiple' => false,
     'required' => false,
@@ -82,7 +86,9 @@ $pondLocalizations = __('livewire-filepond::filepond');
 
       pond.setOptions(@js($pondProperties));
 
+      @if($isCustomPlaceholder)
       pond.setOptions({ labelIdle: @js($placeholder) });
+      @endif
 
       pond.addFiles(files)
       pond.on('addfile', (error, file) => {
