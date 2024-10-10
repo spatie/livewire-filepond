@@ -107,7 +107,7 @@ The last method can be used to change the locale on the fly. Like when a user ch
 
 ## Server Side Validation on upload
 
-Optionally you can validate the uploaded file immedialetely. This is handy to inform the user of an error and process file uploads without clicking a button.
+Optionally, you can validate the uploaded file immediately. This is useful to inform the user of an error and process file uploads without requiring the user to click a button.
 
 ```php
 use Livewire\Component;
