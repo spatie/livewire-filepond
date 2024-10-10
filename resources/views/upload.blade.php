@@ -59,9 +59,17 @@ $pondLocalizations = __('livewire-filepond::filepond');
           server: {
               process: async (fieldName, file, metadata, load, error, progress) => {
                   $dispatch('filepond-upload-started', '{{ $wireModelAttribute }}');
-                  await @this.upload('{{ $wireModelAttribute }}', file, (response) => {
-                      load(response);
-                      $dispatch('filepond-upload-finished', {'{{ $wireModelAttribute }}': response });
+                  await @this.upload('{{ $wireModelAttribute }}', file, async (response) => {
+                    const validationResult  = await @this.call('validateUploadedFile', response);
+                        // Check server validation result
+                        if (validationResult === true) {
+                            // File is valid, dispatch the upload-finished event
+                            load(response);
+                            $dispatch('filepond-upload-finished', { '{{ $wireModelAttribute }}': response });
+                        } else {
+                            // Throw error after validating server side
+                            error('Filepond Api Ignores This Message');
+                        }
                   }, error, progress);
               },
               revert: async (filename, load) => {
