@@ -62,6 +62,14 @@ trait WithFilePond
         app(LivewireManager::class)->updateProperty($this, $property, $newFiles);
     }
 
+    /**
+     * Default returns true, override in your component
+     */
+    public function validateUploadedFile(): bool
+    {
+        return true;
+    }
+
     public function resetFilePond(string $property): void
     {
         $this->reset($property);

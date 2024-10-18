@@ -105,6 +105,35 @@ App::setLocale('id'); // change to Indonesian for example
 ```
 The last method can be used to change the locale on the fly. Like when a user changes the language (You need to implement this yourself).
 
+## Server Side Validation on upload
+
+Optionally, you can validate the uploaded file immediately. This is useful to inform the user of an error and process file uploads without requiring the user to click a button.
+
+```php
+use Livewire\Component;
+use Spatie\LivewireFilepond\WithFilePond;
+
+class MyLivewireComponent extends Component
+{
+    use WithFilePond;
+    
+    public $file;
+
+    public function rules(): array
+    {
+        return [
+            'file' => 'required|mimetypes:image/jpg,image/jpeg,image/png|max:3000',
+        ];
+    }
+    public function validateUploadedFile()
+    {
+        $this->validate();
+
+        return true;
+    }
+}
+```
+
 ## Publishing assets
 
 Livewire Filepond automatically loads the scripts through an endpoint. If you want to serve the assets directly, you can publish them:
