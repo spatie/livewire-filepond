@@ -2,6 +2,19 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.3.0 - 2024-10-18
+
+### What's Changed
+
+* Allow Server Side validation during upload by @dragonfly4 in https://github.com/spatie/livewire-filepond/pull/25
+* Fix labelIdle localization bug to show correct label by @dragonfly4 in https://github.com/spatie/livewire-filepond/pull/24
+
+### New Contributors
+
+* @dragonfly4 made their first contribution in https://github.com/spatie/livewire-filepond/pull/25
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.2.3...1.3.0
+
 ## 1.2.3 - 2024-10-07
 
 ### What's Changed
