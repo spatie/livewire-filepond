@@ -2,6 +2,18 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.4.0 - 2024-11-22
+
+### What's Changed
+
+* Added transform and resize filepond plugins by @orchidcode in https://github.com/spatie/livewire-filepond/pull/31
+
+### New Contributors
+
+* @orchidcode made their first contribution in https://github.com/spatie/livewire-filepond/pull/31
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.3.0...1.4.0
+
 ## 1.3.0 - 2024-10-18
 
 ### What's Changed
