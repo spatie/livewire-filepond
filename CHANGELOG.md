@@ -2,6 +2,21 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.4.1 - 2025-02-21
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot in https://github.com/spatie/livewire-filepond/pull/34
+* Bump aglipanci/laravel-pint-action from 2.4 to 2.5 by @dependabot in https://github.com/spatie/livewire-filepond/pull/35
+* Laravel 12.x Compatibility by @laravel-shift in https://github.com/spatie/livewire-filepond/pull/36
+
+### New Contributors
+
+* @dependabot made their first contribution in https://github.com/spatie/livewire-filepond/pull/34
+* @laravel-shift made their first contribution in https://github.com/spatie/livewire-filepond/pull/36
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.4.0...1.4.1
+
 ## 1.4.0 - 2024-11-22
 
 ### What's Changed
