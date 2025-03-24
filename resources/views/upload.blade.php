@@ -104,6 +104,11 @@ $pondLocalizations = __('livewire-filepond::filepond');
           if (error) console.log(error);
       });
 
+      // All files have been processed and uploaded, dispatch the upload-completed event 
+      pond.on('processfiles', () => {
+          $dispatch('filepond-upload-completed', {'attribute' : '{{ $wireModelAttribute }}'});
+      });
+
       $wire.on('filepond-reset-{{ $wireModelAttribute }}', () => {
           pond.removeFiles();
       });

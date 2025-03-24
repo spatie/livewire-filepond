@@ -105,6 +105,16 @@ App::setLocale('id'); // change to Indonesian for example
 ```
 The last method can be used to change the locale on the fly. Like when a user changes the language (You need to implement this yourself).
 
+## Events
+
+Optionally, you can use these Alpine.js events when needed:
+
+- `filepond-upload-started`: Started file upload.
+- `filepond-upload-finished`: Finished file upload.
+- `filepond-upload-reverted`: File upload reverted by user.
+- `filepond-upload-file-removed`: File removed from list by user.
+- `filepond-upload-completed`: All files in the list have been processed and uploaded.
+
 ## Server Side Validation on upload
 
 Optionally, you can validate the uploaded file immediately. This is useful to inform the user of an error and process file uploads without requiring the user to click a button.
