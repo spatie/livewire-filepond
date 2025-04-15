@@ -16,12 +16,11 @@ trait WithFilePond
     {
         $file = Str::after($filename, config('app.url'));
         $data = $this->getPropertyValue($property);
-        $filtered = array_values(array_filter($data, fn($item) => $item !== $file));
         app(LivewireManager::class)->updateProperty(
             $this,
             $property,
             is_array($this->getPropertyValue($property))
-                ? $filtered
+                ? array_values(array_filter($data, fn($item) => $item !== $file))
                 : null,
         );
 
