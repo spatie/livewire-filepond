@@ -114,5 +114,6 @@ $pondLocalizations = __('livewire-filepond::filepond');
       });
     }"
 >
+    test
     <input type="file" x-ref="input">
 </div>
