@@ -9,6 +9,7 @@ import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import FilePondPluginImageCrop from 'filepond-plugin-image-crop';
 import FilePondPluginImageTransform from 'filepond-plugin-image-transform';
 import FilePondPluginImageResize from 'filepond-plugin-image-resize';
+import FileRename from 'filepond-plugin-file-rename';
 
 FilePond.registerPlugin(FilePondPluginImagePreview);
 FilePond.registerPlugin(FilePondPluginFileValidateSize);
@@ -16,6 +17,7 @@ FilePond.registerPlugin(FilePondPluginFileValidateType);
 FilePond.registerPlugin(FilePondPluginImageCrop);
 FilePond.registerPlugin(FilePondPluginImageResize);
 FilePond.registerPlugin(FilePondPluginImageTransform);
+FilePond.registerPlugin(FileRename);
 
 const URLtoFile = async function (path) {
     let url = `${path}`;

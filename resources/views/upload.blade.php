@@ -60,6 +60,11 @@ $pondLocalizations = __('livewire-filepond::filepond');
 
       pond.setOptions({
           allowMultiple: isMultiple,
+          fileRenameFunction: (file) => {
+                const ext = file.name.split('.').pop();
+                const safeName = `upload-${Date.now()}.${ext}`;
+                return safeName;
+            },
           server: {
               process: async (fieldName, file, metadata, load, error, progress) => {
                   $dispatch('filepond-upload-started', '{{ $wireModelAttribute }}');
