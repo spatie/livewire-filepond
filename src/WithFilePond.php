@@ -15,12 +15,12 @@ trait WithFilePond
     public function remove($property, $filename): void
     {
         $file = Str::after($filename, config('app.url'));
-
+        $data = $this->getPropertyValue($property);
         app(LivewireManager::class)->updateProperty(
             $this,
             $property,
             is_array($this->getPropertyValue($property))
-                ? []
+                ? array_values(array_filter($data, fn($item) => $item !== $file))
                 : null,
         );
 
