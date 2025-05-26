@@ -2,6 +2,25 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.5.0 - 2025-05-26
+
+### What's Changed
+
+* Update larastan/larastan requirement from ^2.9 to ^3.1 by @dependabot in https://github.com/spatie/livewire-filepond/pull/37
+* Fix broken upload status by @yungifez in https://github.com/spatie/livewire-filepond/pull/47
+* Add Turkmen language translations for FilePond by @diat01 in https://github.com/spatie/livewire-filepond/pull/45
+* Add new filepond-upload-completed event & update README by @laxmax85 in https://github.com/spatie/livewire-filepond/pull/40
+* fix(WithFilePond): correctly filter file array when removing a file by @Lemperbro in https://github.com/spatie/livewire-filepond/pull/42
+
+### New Contributors
+
+* @yungifez made their first contribution in https://github.com/spatie/livewire-filepond/pull/47
+* @diat01 made their first contribution in https://github.com/spatie/livewire-filepond/pull/45
+* @laxmax85 made their first contribution in https://github.com/spatie/livewire-filepond/pull/40
+* @Lemperbro made their first contribution in https://github.com/spatie/livewire-filepond/pull/42
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.4.1...1.5.0
+
 ## 1.4.1 - 2025-02-21
 
 ### What's Changed
