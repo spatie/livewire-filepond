@@ -75,7 +75,9 @@ $pondLocalizations = __('livewire-filepond::filepond');
                             error('Filepond Api Ignores This Message');
                             $dispatch('filepond-upload-reset', '{{ $wireModelAttribute }}');
                         }
-                  }, error, progress);
+                  }, error, (event) => {
+                        progress(event.detail.progress, event.detail.progress, 100);
+                });
               },
               revert: async (filename, load) => {
                   await @this.revert('{{ $wireModelAttribute }}', filename, load);
