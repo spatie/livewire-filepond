@@ -20,7 +20,7 @@ trait WithFilePond
             $this,
             $property,
             is_array($this->getPropertyValue($property))
-                ? array_values(array_filter($data, fn($item) => $item !== $file))
+                ? array_values(array_filter($data, fn ($item) => $item !== $file))
                 : null,
         );
 
