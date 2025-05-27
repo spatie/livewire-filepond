@@ -62,18 +62,18 @@ $pondLocalizations = __('livewire-filepond::filepond');
           allowMultiple: isMultiple,
           server: {
               process: async (fieldName, file, metadata, load, error, progress) => {
-                  $dispatch('filepond-upload-started', '{{ $wireModelAttribute }}');
+                  $wire.dispatchSelf('filepond-upload-started', '{{ $wireModelAttribute }}');
                   await @this.upload('{{ $wireModelAttribute }}', file, async (response) => {
                     let validationResult  = await @this.call('validateUploadedFile', response);
                         // Check server validation result
                         if (validationResult === true) {
                             // File is valid, dispatch the upload-finished event
                             load(response);
-                            $dispatch('filepond-upload-finished', { '{{ $wireModelAttribute }}': response });
+                            $wire.dispatchSelf('filepond-upload-finished', { '{{ $wireModelAttribute }}': response });
                         } else {
                             // Throw error after validating server side
                             error('Filepond Api Ignores This Message');
-                            $dispatch('filepond-upload-reset', '{{ $wireModelAttribute }}');
+                            $wire.dispatchSelf('filepond-upload-reset', '{{ $wireModelAttribute }}');
                         }
                   }, error, (event) => {
                         progress(event.detail.progress, event.detail.progress, 100);
@@ -81,12 +81,12 @@ $pondLocalizations = __('livewire-filepond::filepond');
               },
               revert: async (filename, load) => {
                   await @this.revert('{{ $wireModelAttribute }}', filename, load);
-                  $dispatch('filepond-upload-reverted', {'attribute' : '{{ $wireModelAttribute }}'});
+                  $wire.dispatchSelf('filepond-upload-reverted', {'attribute' : '{{ $wireModelAttribute }}'});
               },
               remove: async (file, load) => {
                   await @this.remove('{{ $wireModelAttribute }}', file.name);
                   load();
-                  $dispatch('filepond-upload-file-removed', {'attribute' : '{{ $wireModelAttribute }}'});
+                  $wire.dispatchSelf('filepond-upload-file-removed', {'attribute' : '{{ $wireModelAttribute }}'});
               },
           },
           required: @js($required),
@@ -108,7 +108,7 @@ $pondLocalizations = __('livewire-filepond::filepond');
 
       // All files have been processed and uploaded, dispatch the upload-completed event 
       pond.on('processfiles', () => {
-          $dispatch('filepond-upload-completed', {'attribute' : '{{ $wireModelAttribute }}'});
+          $wire.dispatchSelf('filepond-upload-completed', {'attribute' : '{{ $wireModelAttribute }}'});
       });
 
       $wire.on('filepond-reset-{{ $wireModelAttribute }}', () => {
