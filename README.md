@@ -80,6 +80,8 @@ Optionally, you can use these component properties to customize the component:
 
 Additionally, you can also pass [any property that the Filepond component accepts](https://pqina.nl/filepond/docs/api/instance/properties/) and [plugins properties](https://pqina.nl/filepond/docs/api/plugins/). Make sure to use kebab case the property. For example, to set the maximum number of files to 5, you can do this:
 
+When using `multiple` make sure to change your definition from `public $file;` to `public array $files = [];`. Otherwise you will still only have one file in your property.
+
 ```bladehtml
 <x-filepond::upload wire:model="file" max-files="5" />
 ```
