@@ -12,30 +12,39 @@ trait WithFilePond
 {
     use WithFileUploads;
 
+    public $waiting_remove = [];
+
     public function remove($property, $filename): void
     {
         $file = Str::after($filename, config('app.url'));
+
         $data = $this->getPropertyValue($property);
         app(LivewireManager::class)->updateProperty(
             $this,
             $property,
             is_array($this->getPropertyValue($property))
-                ? array_values(array_filter($data, fn($item) => $item !== $file))
-                : null,
+            ? array_values(array_filter($data, fn($item) => $item !== $file))
+            : null,
         );
-
-        File::delete(public_path($file));
+        $this->waiting_remove[] = $file;
     }
+    public function filePondRemoveFile()
+    {
+        foreach ($this->waiting_remove as $item) {
+            File::delete(public_path($item));
+        }
+    }
+
 
     public function revert($property, $filename): void
     {
-        if (! $this->hasProperty($property)) {
+        if (!$this->hasProperty($property)) {
             return;
         }
 
         $uploads = $this->getPropertyValue($property);
 
-        if (! is_array($uploads)) {
+        if (!is_array($uploads)) {
             if ($uploads instanceof TemporaryUploadedFile && $uploads->getFilename() === $filename) {
                 $uploads->delete();
                 app(LivewireManager::class)->updateProperty($this, $property, null);
@@ -46,7 +55,7 @@ trait WithFilePond
 
         $newFiles = collect($uploads)
             ->filter(function ($upload) use ($filename) {
-                if (! $upload instanceof TemporaryUploadedFile) {
+                if (!$upload instanceof TemporaryUploadedFile) {
                     return false;
                 }
 
