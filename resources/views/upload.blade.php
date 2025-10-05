@@ -6,7 +6,9 @@ $isCustomPlaceholder = isset($placeholder);
     'multiple' => false,
     'required' => false,
     'disabled' => false,
+    'maxFiles' => null,
     'placeholder' => __('Drag & Drop your files or <span class="filepond--label-action"> Browse </span>'),
+    'maxfilesmsg' => __('You can upload a maximum of :max files.'),
 ])
 
 @php
@@ -22,6 +24,10 @@ $pondProperties = $attributes->except([
     'multiple',
     'wire:model',
 ]);
+
+if ($maxFiles !== null) {
+    $pondProperties['max-files'] = $maxFiles;
+}
 
 // convert keys from kebab-case to camelCase
 $pondProperties = collect($pondProperties)
@@ -106,7 +112,14 @@ $pondLocalizations = __('livewire-filepond::filepond');
           if (error) console.log(error);
       });
 
-      // All files have been processed and uploaded, dispatch the upload-completed event 
+      pond.on('warning', (error) => {
+          if (error?.body === 'Max files' && {{ $maxFiles ? 'true' : 'false' }}) {
+              const message = @js($maxfilesmsg).replace(':max', {{ $maxFiles ?? 0 }});
+              $wire.call('setMaxFilesError', message);
+          }
+      });
+
+      // All files have been processed and uploaded, dispatch the upload-completed event
       pond.on('processfiles', () => {
           $dispatch('filepond-upload-completed', {'attribute' : '{{ $wireModelAttribute }}'});
       });
