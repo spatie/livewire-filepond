@@ -50,7 +50,11 @@ $pondLocalizations = __('livewire-filepond::filepond');
               return;
             }
 
-            this.files.push(await URLtoFile(this.model))
+            try {
+                this.files.push(await URLtoFile(this.model))
+            } catch (e) {
+                console.error(e)
+            }
         }
     }"
     x-init="async () => {
@@ -106,7 +110,7 @@ $pondLocalizations = __('livewire-filepond::filepond');
           if (error) console.log(error);
       });
 
-      // All files have been processed and uploaded, dispatch the upload-completed event 
+      // All files have been processed and uploaded, dispatch the upload-completed event
       pond.on('processfiles', () => {
           $dispatch('filepond-upload-completed', {'attribute' : '{{ $wireModelAttribute }}'});
       });
