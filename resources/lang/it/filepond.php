@@ -41,4 +41,3 @@ return [
     'imageValidateSizeLabelExpectedMinResolution' => 'La risoluzione minima è {minResolution}',
     'imageValidateSizeLabelExpectedMaxResolution' => 'La risoluzione massima è {maxResolution}',
 ];
-
