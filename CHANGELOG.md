@@ -2,6 +2,22 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.5.1 - 2025-12-10
+
+### What's Changed
+
+* Update issue template by @AlexVanderbist in https://github.com/spatie/livewire-filepond/pull/58
+* Don't crash when a file can't be loaded by @riasvdv in https://github.com/spatie/livewire-filepond/pull/62
+* Improve italian localization by @Alessandro-DG in https://github.com/spatie/livewire-filepond/pull/57
+
+### New Contributors
+
+* @AlexVanderbist made their first contribution in https://github.com/spatie/livewire-filepond/pull/58
+* @riasvdv made their first contribution in https://github.com/spatie/livewire-filepond/pull/62
+* @Alessandro-DG made their first contribution in https://github.com/spatie/livewire-filepond/pull/57
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.5.0...1.5.1
+
 ## 1.5.0 - 2025-05-26
 
 ### What's Changed
