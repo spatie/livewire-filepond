@@ -30,6 +30,10 @@ class LivewireFilepondServiceProvider extends PackageServiceProvider
             return Utils::pretendResponseIsFile(__DIR__.'/../resources/dist/filepond.css', 'text/css');
         })->name('livewire-filepond.styles');
 
+        Route::get('_filepond/filepond.js.map', function () {
+            return Utils::pretendResponseIsFile(__DIR__.'/../resources/dist/filepond.js.map');
+        })->name('livewire-filepond.scriptsMap');
+
         Blade::component('livewire-filepond::upload', 'filepond::upload');
 
         Blade::directive('filepondScripts', function () {
