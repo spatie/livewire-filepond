@@ -9,6 +9,7 @@ $isCustomPlaceholder = isset($placeholder);
     'maxFiles' => null,
     'placeholder' => __('Drag & Drop your files or <span class="filepond--label-action"> Browse </span>'),
     'maxfilesmsg' => __('You can upload a maximum of :max files.'),
+    'identifier' => null,
 ])
 
 @php
@@ -72,18 +73,18 @@ $pondLocalizations = __('livewire-filepond::filepond');
           allowMultiple: isMultiple,
           server: {
               process: async (fieldName, file, metadata, load, error, progress) => {
-                  $dispatch('filepond-upload-started', '{{ $wireModelAttribute }}');
+                  $dispatch('filepond-upload-started', { attribute: '{{ $wireModelAttribute }}' });
                   await @this.upload('{{ $wireModelAttribute }}', file, async (response) => {
                     let validationResult  = await @this.call('validateUploadedFile', response);
                         // Check server validation result
                         if (validationResult === true) {
                             // File is valid, dispatch the upload-finished event
                             load(response);
-                            $dispatch('filepond-upload-finished', { '{{ $wireModelAttribute }}': response });
+                            $dispatch('filepond-upload-finished{{ $identifier ? '-'.$identifier : '' }}', { attribute: '{{ $wireModelAttribute }}', response: response });
                         } else {
                             // Throw error after validating server side
                             error('Filepond Api Ignores This Message');
-                            $dispatch('filepond-upload-reset', '{{ $wireModelAttribute }}');
+                            $dispatch('filepond-upload-reset', { attribute: '{{ $wireModelAttribute }}' });
                         }
                   }, error, (event) => {
                         progress(event.detail.progress, event.detail.progress, 100);
@@ -125,7 +126,7 @@ $pondLocalizations = __('livewire-filepond::filepond');
 
       // All files have been processed and uploaded, dispatch the upload-completed event
       pond.on('processfiles', () => {
-          $dispatch('filepond-upload-completed', {'attribute' : '{{ $wireModelAttribute }}'});
+          $dispatch('filepond-upload-completed{{ $identifier ? '-'.$identifier : '' }}', {'attribute' : '{{ $wireModelAttribute }}'});
       });
 
       $wire.on('filepond-reset-{{ $wireModelAttribute }}', () => {

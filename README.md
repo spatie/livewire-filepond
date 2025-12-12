@@ -79,6 +79,7 @@ Optionally, you can use these component properties to customize the component:
 - `max-files`: Sets the maximum number of files that can be uploaded. Default: `null`.
 - `placeholder`: Placeholder text for the file input. Default: `Drag & Drop your files or <span class="filepond--label-action"> Browse </span>`.
 - `maxfilesmsg`: Error message shown when the maximum number of uploads is reached. Default: `You can upload a maximum of :max files.`.
+- `identifier`: A unique identifier for the upload component. Required when using multiple file upload instances on the same page. Default: `null`.
 
 Additionally, you can also pass [any property that the Filepond component accepts](https://pqina.nl/filepond/docs/api/instance/properties/) and [plugins properties](https://pqina.nl/filepond/docs/api/plugins/). Make sure to use kebab case the property. For example, to set the maximum number of files to 5, you can do this:
 
@@ -153,6 +154,60 @@ class MyLivewireComponent extends Component
         return true;
     }
 }
+```
+
+## Multiple instances on the same page
+
+When multiple upload components are rendered on the same page, assign a unique `identifier` to each instance.
+
+```bladehtml
+<x-filepond::upload wire:model="file" identifier="headerlogo" />
+```
+
+Use the same `identifier` in the event name you listen for in your Livewire component.
+In this example, the upload is processed and a browser event is dispatched to preview the uploaded logo.
+
+```php
+use Livewire\Component;
+use Spatie\LivewireFilepond\WithFilePond;
+
+class MyLivewireComponent extends Component
+{
+    use WithFilePond;
+    
+    public $file;
+
+    public string $identifier = 'headerlogo';
+
+    #[On('filepond-upload-finished-{identifier}')]
+    public function processFile()
+    {
+        if (! $this->file) {
+            return true;
+        }
+
+        // .....
+
+        // Dispatch preview event to Alpine
+        $this->dispatch(
+            "media-uploaded-{$this->identifier}",
+            imgurl: $file->publicUrl('small')
+        );
+
+        $this->resetFilePond('file');
+    }
+}
+```
+
+The `identifier` is also used as part of the dispatched browser event, allowing you to listen for uploads per instance.
+
+```bladehtml
+<div
+    x-data="{ logo: '{{ $myUrlToLogo }}' }"
+    x-on:media-uploaded-headerlogo.window="
+        logo = $event.detail.imgurl
+    "
+></div>
 ```
 
 ## Publishing assets
