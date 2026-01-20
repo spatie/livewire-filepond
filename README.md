@@ -76,12 +76,23 @@ Optionally, you can use these component properties to customize the component:
 - `multiple`: Allow multiple files to be uploaded. Default: `false`.
 - `required`: Make the file input required. Default: `false`.
 - `disabled`: Disable the file input. Default: `false`.
+- `max-files`: Sets the maximum number of files that can be uploaded. Default: `null`.
 - `placeholder`: Placeholder text for the file input. Default: `Drag & Drop your files or <span class="filepond--label-action"> Browse </span>`.
+- `maxfilesmsg`: Error message shown when the maximum number of uploads is reached. Default: `You can upload a maximum of :max files.`.
 
 Additionally, you can also pass [any property that the Filepond component accepts](https://pqina.nl/filepond/docs/api/instance/properties/) and [plugins properties](https://pqina.nl/filepond/docs/api/plugins/). Make sure to use kebab case the property. For example, to set the maximum number of files to 5, you can do this:
 
 ```bladehtml
 <x-filepond::upload wire:model="file" max-files="5" />
+```
+
+If you pass the `max-files` property, ensure your Livewire component includes a public method to show the validation message when the file limit is reached.
+
+```php
+public function setMaxFilesError(string $message): void
+{
+    $this->addError('file', $message);
+}
 ```
 
 Localization automatically works based on the current locale. If you want to customize the language, you can publish the language file using:
