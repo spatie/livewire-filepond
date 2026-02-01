@@ -2,6 +2,19 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.6.0 - 2026-02-01
+
+### What's Changed
+
+* Fix max-files handling and add maxfilesmsg support for better UX. by @dragonfly4 in https://github.com/spatie/livewire-filepond/pull/60
+* Dispatch Events only to self component  by @trippo in https://github.com/spatie/livewire-filepond/pull/67
+
+### New Contributors
+
+* @trippo made their first contribution in https://github.com/spatie/livewire-filepond/pull/67
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.5.1...1.6.0
+
 ## 1.5.1 - 2025-12-10
 
 ### What's Changed
