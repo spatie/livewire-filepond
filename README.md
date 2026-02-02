@@ -7,7 +7,7 @@
 
 [Filepond](https://pqina.nl/filepond/) is a powerful JavaScript library to upload files.
 
-This repository contains a Livewire component that allow you to use Filepond easily in your  projects.
+This repository contains a Livewire component that allow you to use Filepond easily in your projects. Compatible with **Livewire 3** and **Livewire 4**.
 
 Here's an example of how you can use it in your views:
 

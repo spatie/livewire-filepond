@@ -2,6 +2,12 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## Unreleased
+
+### What's Changed
+
+* Livewire 4 compatibility has been added (`livewire/livewire: ^3.5|^4.0`)
+
 ## 1.6.0 - 2026-02-01
 
 ### What's Changed
