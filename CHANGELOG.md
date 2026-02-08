@@ -2,6 +2,17 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.7.0 - 2026-02-09
+
+### What's Changed
+
+* Drop Laravel 10 support
+* Fix CI workflow matrix for Laravel 12
+* Add PHP 8.4 and 8.5 to CI matrix
+* Bump dependencies
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.6.1...1.7.0
+
 ## 1.6.1 - 2026-02-09
 
 ### What's Changed
