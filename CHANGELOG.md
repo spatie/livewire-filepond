@@ -2,6 +2,10 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.7.1 - 2026-02-27
+
+Add support for Laravel 13
+
 ## 1.7.0 - 2026-02-09
 
 ### What's Changed
