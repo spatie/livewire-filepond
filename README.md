@@ -1,8 +1,8 @@
 # Upload files using Filepond in Livewire components
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/livewire-filepond.svg?style=flat-square)](https://packagist.org/packages/spatie/livewire-filepond)
-[![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/spatie/livewire-filepond/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/spatie/livewire-filepond/actions?query=workflow%3Arun-tests+branch%3Amain)
-[![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/spatie/livewire-filepond/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/spatie/livewire-filepond/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
+[![GitHub Tests Action Status](https://github.com/spatie/livewire-filepond/actions/workflows/run-tests.yml/badge.svg)](https://github.com/spatie/livewire-filepond/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![GitHub Code Style Action Status](https://github.com/spatie/livewire-filepond/actions/workflows/fix-php-code-style-issues.yml/badge.svg)](https://github.com/spatie/livewire-filepond/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/livewire-filepond.svg?style=flat-square)](https://packagist.org/packages/spatie/livewire-filepond)
 
 [Filepond](https://pqina.nl/filepond/) is a powerful JavaScript library to upload files.
