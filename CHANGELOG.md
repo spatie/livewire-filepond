@@ -2,6 +2,22 @@
 
 All notable changes to `livewire-filepond` will be documented in this file.
 
+## 1.8.0 - 2026-09-01
+
+### What's Changed
+
+* Bump ramsey/composer-install from 3 to 4 by @dependabot[bot] in https://github.com/spatie/livewire-filepond/pull/75
+* Bump actions/setup-node from 4 to 6 by @dependabot[bot] in https://github.com/spatie/livewire-filepond/pull/74
+* Bump dependabot/fetch-metadata from 2.3.0 to 3.1.0 by @dependabot[bot] in https://github.com/spatie/livewire-filepond/pull/73
+* Bump actions/checkout from 4 to 6 by @dependabot[bot] in https://github.com/spatie/livewire-filepond/pull/72
+* Bump stefanzweifel/git-auto-commit-action from 5 to 7 by @dependabot[bot] in https://github.com/spatie/livewire-filepond/pull/71
+* Bump aglipanci/laravel-pint-action from 2.5 to 2.6 by @dependabot[bot] in https://github.com/spatie/livewire-filepond/pull/77
+* Bump actions/checkout from 6 to 7 by @dependabot[bot] in https://github.com/spatie/livewire-filepond/pull/78
+* Bump actions/setup-node from 6 to 7 by @dependabot[bot] in https://github.com/spatie/livewire-filepond/pull/79
+* Restrict which files remove() may delete by @freekmurze in https://github.com/spatie/livewire-filepond/pull/80
+
+**Full Changelog**: https://github.com/spatie/livewire-filepond/compare/1.7.1...1.8.0
+
 ## 1.7.1 - 2026-02-27
 
 Add support for Laravel 13
