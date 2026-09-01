@@ -255,3 +255,25 @@ it('removes a file that the component allows to be removed', function () {
 
     expect(File::exists("{$this->publicPath}/uploads/photo.jpg"))->toBeFalse();
 });
+
+it('applies the removal rules to a filename that is not written in its canonical form', function () {
+    File::put("{$this->publicPath}/uploads/photo.jpg", 'contents');
+
+    Livewire::test(TestComponentWithRemovalRules::class, ['photos' => ['/.//uploads/photo.jpg']])
+        ->call('remove', 'photos', '/.//uploads/photo.jpg')
+        ->assertSet('photos', []);
+
+    expect(File::exists("{$this->publicPath}/uploads/photo.jpg"))->toBeFalse();
+});
+
+it('applies the removal rules when the app url has a trailing slash', function () {
+    config()->set('app.url', 'http://localhost/');
+
+    File::put("{$this->publicPath}/uploads/photo.jpg", 'contents');
+
+    Livewire::test(TestComponentWithRemovalRules::class, ['photos' => ['http://localhost/uploads/photo.jpg']])
+        ->call('remove', 'photos', 'http://localhost/uploads/photo.jpg')
+        ->assertSet('photos', []);
+
+    expect(File::exists("{$this->publicPath}/uploads/photo.jpg"))->toBeFalse();
+});

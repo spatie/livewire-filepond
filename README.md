@@ -159,7 +159,7 @@ class MyLivewireComponent extends Component
 
 When a user removes a file that was loaded from your model, the component deletes it from disk. Only files that are attached to the wired property and that live inside the public directory (or inside one of the symlinks configured in `filesystems.links`) are deleted.
 
-You can narrow this down further by overriding `canRemoveFile` in your component. The path it receives is relative to the public directory.
+You can narrow this down further by overriding `canRemoveFile` in your component. The path it receives is relative to the public directory and always starts with a slash, no matter how the browser spelled it.
 
 ```php
 use Livewire\Component;

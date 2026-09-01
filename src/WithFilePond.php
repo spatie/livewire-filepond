@@ -18,7 +18,7 @@ trait WithFilePond
             return;
         }
 
-        $path = Str::after($filename, (string) config('app.url'));
+        $path = $this->normalizeFilePondPath(Str::after($filename, (string) config('app.url')));
 
         if (! $this->isSafeFilePondPath($path)) {
             return;
@@ -38,7 +38,9 @@ trait WithFilePond
                 : null,
         );
 
-        if (! $this->isInsideFilePondRemovalRoot($path)) {
+        $target = $this->filePondRemovalTarget($path);
+
+        if ($target === null) {
             return;
         }
 
@@ -46,7 +48,7 @@ trait WithFilePond
             return;
         }
 
-        File::delete(public_path($path));
+        File::delete($target);
     }
 
     public function revert($property, $filename): void
@@ -100,7 +102,8 @@ trait WithFilePond
 
     /**
      * Default returns true, override in your component to narrow down
-     * which files may be deleted from disk.
+     * which files may be deleted from disk. The given path is relative
+     * to the public directory and always starts with a slash.
      */
     protected function canRemoveFile(string $path): bool
     {
@@ -121,6 +124,16 @@ trait WithFilePond
             ->all();
     }
 
+    protected function normalizeFilePondPath(string $path): string
+    {
+        $segments = array_filter(
+            preg_split('#[/\\\\]#', $path) ?: [],
+            fn (string $segment) => $segment !== '' && $segment !== '.',
+        );
+
+        return '/'.implode('/', $segments);
+    }
+
     protected function isSafeFilePondPath(string $path): bool
     {
         if (str_contains($path, "\0")) {
@@ -130,21 +143,21 @@ trait WithFilePond
         return ! in_array('..', preg_split('#[/\\\\]#', $path) ?: [], strict: true);
     }
 
-    protected function isInsideFilePondRemovalRoot(string $path): bool
+    protected function filePondRemovalTarget(string $path): ?string
     {
         $target = realpath(public_path($path));
 
         if ($target === false) {
-            return false;
+            return null;
         }
 
         foreach ($this->filePondRemovalRoots() as $root) {
             if (str_starts_with($target, $root.DIRECTORY_SEPARATOR)) {
-                return true;
+                return $target;
             }
         }
 
-        return false;
+        return null;
     }
 
     protected function filePondPropertyHolds(mixed $uploads, string $path, string $filename): bool
