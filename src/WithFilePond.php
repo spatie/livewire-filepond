@@ -12,19 +12,33 @@ trait WithFilePond
 {
     use WithFileUploads;
 
-    public function remove($property, $filename): void
+    public function remove(string $property, string $filename): void
     {
-        $file = Str::after($filename, config('app.url'));
-        $data = $this->getPropertyValue($property);
+        if (! $this->hasProperty($property)) {
+            return;
+        }
+
+        $path = Str::after($filename, (string) config('app.url'));
+
+        if (! $this->isRemovableFilePondPath($path)) {
+            return;
+        }
+
+        $uploads = $this->getPropertyValue($property);
+
+        if (! $this->filePondPropertyHolds($uploads, $path, $filename)) {
+            return;
+        }
+
         app(LivewireManager::class)->updateProperty(
             $this,
             $property,
-            is_array($this->getPropertyValue($property))
-                ? array_values(array_filter($data, fn ($item) => $item !== $file))
+            is_array($uploads)
+                ? array_values(array_filter($uploads, fn ($item) => $item !== $path && $item !== $filename))
                 : null,
         );
 
-        File::delete(public_path($file));
+        File::delete(public_path($path));
     }
 
     public function revert($property, $filename): void
@@ -74,5 +88,24 @@ trait WithFilePond
     {
         $this->reset($property);
         $this->dispatch("filepond-reset-$property");
+    }
+
+    protected function isRemovableFilePondPath(string $path): bool
+    {
+        if (str_contains($path, "\0")) {
+            return false;
+        }
+
+        return ! in_array('..', preg_split('#[/\\\\]#', $path) ?: [], strict: true);
+    }
+
+    protected function filePondPropertyHolds(mixed $uploads, string $path, string $filename): bool
+    {
+        if (is_array($uploads)) {
+            return in_array($path, $uploads, strict: true)
+                || in_array($filename, $uploads, strict: true);
+        }
+
+        return $uploads === $path || $uploads === $filename;
     }
 }

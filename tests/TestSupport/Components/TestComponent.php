@@ -9,6 +9,10 @@ class TestComponent extends Component
 {
     use WithFilePond;
 
+    public array $photos = [];
+
+    public $photo = null;
+
     public function render()
     {
         return '<div>dummy</div>';
