@@ -4,6 +4,7 @@ use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 use Livewire\Livewire;
 use Spatie\LivewireFilepond\Tests\TestSupport\Components\TestComponent;
+use Spatie\LivewireFilepond\Tests\TestSupport\Components\TestComponentWithRemovalRules;
 
 beforeEach(function () {
     $this->basePath = sys_get_temp_dir().'/livewire-filepond-tests';
@@ -17,6 +18,7 @@ beforeEach(function () {
     app()->usePublicPath($this->publicPath);
 
     config()->set('app.url', 'http://localhost');
+    config()->set('filesystems.links', ["{$this->publicPath}/storage" => "{$this->basePath}/storage/app/public"]);
 });
 
 afterEach(function () {
@@ -189,4 +191,67 @@ it('reverts a temporary upload', function () {
         ->assertSet('photo', null);
 
     expect($upload->exists())->toBeFalse();
+});
+
+it('removes a file behind a symlink that is configured as a filesystem link', function () {
+    $linkedPath = "{$this->basePath}/shared";
+    File::ensureDirectoryExists($linkedPath);
+    File::put("{$linkedPath}/photo.jpg", 'contents');
+    symlink($linkedPath, "{$this->publicPath}/shared");
+
+    config()->set('filesystems.links', ["{$this->publicPath}/shared" => $linkedPath]);
+
+    Livewire::test(TestComponent::class, ['photos' => ['/shared/photo.jpg']])
+        ->call('remove', 'photos', '/shared/photo.jpg')
+        ->assertSet('photos', []);
+
+    expect(File::exists("{$linkedPath}/photo.jpg"))->toBeFalse();
+});
+
+it('does not delete a file behind a symlink that is not a configured filesystem link', function () {
+    $secretPath = "{$this->basePath}/secrets";
+    File::ensureDirectoryExists($secretPath);
+    File::put("{$secretPath}/secret.txt", 'secret');
+    symlink($secretPath, "{$this->publicPath}/secrets");
+
+    Livewire::test(TestComponent::class, ['photos' => ['/secrets/secret.txt']])
+        ->call('remove', 'photos', '/secrets/secret.txt');
+
+    expect(File::exists("{$secretPath}/secret.txt"))->toBeTrue();
+});
+
+it('does not delete a file when the filename contains a parent directory segment that resolves inside the public path', function () {
+    File::put("{$this->publicPath}/uploads/photo.jpg", 'contents');
+
+    Livewire::test(TestComponent::class, ['photos' => ['/uploads/../uploads/photo.jpg']])
+        ->call('remove', 'photos', '/uploads/../uploads/photo.jpg');
+
+    expect(File::exists("{$this->publicPath}/uploads/photo.jpg"))->toBeTrue();
+});
+
+it('detaches a file from the property even when it no longer exists on disk', function () {
+    Livewire::test(TestComponent::class, ['photos' => ['/uploads/gone.jpg']])
+        ->call('remove', 'photos', '/uploads/gone.jpg')
+        ->assertSet('photos', []);
+});
+
+it('does not delete a file that the component does not allow to be removed', function () {
+    File::ensureDirectoryExists("{$this->publicPath}/documents");
+    File::put("{$this->publicPath}/documents/photo.jpg", 'contents');
+
+    Livewire::test(TestComponentWithRemovalRules::class, ['photos' => ['/documents/photo.jpg']])
+        ->call('remove', 'photos', '/documents/photo.jpg')
+        ->assertSet('photos', []);
+
+    expect(File::exists("{$this->publicPath}/documents/photo.jpg"))->toBeTrue();
+});
+
+it('removes a file that the component allows to be removed', function () {
+    File::put("{$this->publicPath}/uploads/photo.jpg", 'contents');
+
+    Livewire::test(TestComponentWithRemovalRules::class, ['photos' => ['/uploads/photo.jpg']])
+        ->call('remove', 'photos', '/uploads/photo.jpg')
+        ->assertSet('photos', []);
+
+    expect(File::exists("{$this->publicPath}/uploads/photo.jpg"))->toBeFalse();
 });

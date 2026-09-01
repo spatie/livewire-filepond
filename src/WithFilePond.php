@@ -20,7 +20,7 @@ trait WithFilePond
 
         $path = Str::after($filename, (string) config('app.url'));
 
-        if (! $this->isRemovableFilePondPath($path)) {
+        if (! $this->isSafeFilePondPath($path)) {
             return;
         }
 
@@ -37,6 +37,14 @@ trait WithFilePond
                 ? array_values(array_filter($uploads, fn ($item) => $item !== $path && $item !== $filename))
                 : null,
         );
+
+        if (! $this->isInsideFilePondRemovalRoot($path)) {
+            return;
+        }
+
+        if (! $this->canRemoveFile($path)) {
+            return;
+        }
 
         File::delete(public_path($path));
     }
@@ -90,13 +98,53 @@ trait WithFilePond
         $this->dispatch("filepond-reset-$property");
     }
 
-    protected function isRemovableFilePondPath(string $path): bool
+    /**
+     * Default returns true, override in your component to narrow down
+     * which files may be deleted from disk.
+     */
+    protected function canRemoveFile(string $path): bool
+    {
+        return true;
+    }
+
+    /**
+     * @return array<int, string>
+     */
+    protected function filePondRemovalRoots(): array
+    {
+        $links = config('filesystems.links') ?? [public_path('storage') => storage_path('app/public')];
+
+        return collect([public_path(), ...array_keys($links)])
+            ->map(fn (string $root) => realpath($root))
+            ->filter()
+            ->values()
+            ->all();
+    }
+
+    protected function isSafeFilePondPath(string $path): bool
     {
         if (str_contains($path, "\0")) {
             return false;
         }
 
         return ! in_array('..', preg_split('#[/\\\\]#', $path) ?: [], strict: true);
+    }
+
+    protected function isInsideFilePondRemovalRoot(string $path): bool
+    {
+        $target = realpath(public_path($path));
+
+        if ($target === false) {
+            return false;
+        }
+
+        foreach ($this->filePondRemovalRoots() as $root) {
+            if (str_starts_with($target, $root.DIRECTORY_SEPARATOR)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     protected function filePondPropertyHolds(mixed $uploads, string $path, string $filename): bool

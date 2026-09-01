@@ -155,6 +155,31 @@ class MyLivewireComponent extends Component
 }
 ```
 
+## Restricting which files may be deleted
+
+When a user removes a file that was loaded from your model, the component deletes it from disk. Only files that are attached to the wired property and that live inside the public directory (or inside one of the symlinks configured in `filesystems.links`) are deleted.
+
+You can narrow this down further by overriding `canRemoveFile` in your component. The path it receives is relative to the public directory.
+
+```php
+use Livewire\Component;
+use Spatie\LivewireFilepond\WithFilePond;
+
+class MyLivewireComponent extends Component
+{
+    use WithFilePond;
+
+    public $file;
+
+    protected function canRemoveFile(string $path): bool
+    {
+        return str_starts_with($path, '/uploads/');
+    }
+}
+```
+
+If your application links directories into the public directory without registering them in `filesystems.links`, override `filePondRemovalRoots` to return the absolute paths that files may be deleted from.
+
 ## Publishing assets
 
 Livewire Filepond automatically loads the scripts through an endpoint. If you want to serve the assets directly, you can publish them:
