@@ -7,6 +7,8 @@ on:
       - 'phpstan.neon.dist'
       - '.github/workflows/phpstan.yml'
       - '.github/workflows/run-tests.yml'
+      - 'composer.json'
+      - 'composer.lock'
 
 jobs:
   phpstan:
