@@ -55,7 +55,7 @@ jobs:
       - name: Install dependencies
         shell: bash
         run: |
-          composer require --dev "laravel/framework:${{ matrix.php == '8.6' && '~13.31' || matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer require --dev "laravel/framework:${{ matrix.php == '8.6' && '~13.32' || matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: List Installed Dependencies
