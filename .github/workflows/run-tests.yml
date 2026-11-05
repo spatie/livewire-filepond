@@ -6,6 +6,7 @@ on:
       - '**.php'
       - .github/workflows/run-tests.yml
       - phpunit.xml.dist
+      - phpstan.neon.dist
       - composer.json
       - composer.lock
 
